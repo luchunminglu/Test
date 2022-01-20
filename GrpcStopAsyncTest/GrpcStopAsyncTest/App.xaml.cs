@@ -21,14 +21,8 @@ namespace GrpcStopAsyncTest
     public partial class App : Application
     {
 
-        /// <summary>
-        /// web应用构建器
-        /// </summary>
         private volatile WebApplicationBuilder _webAppBuilder;
 
-        /// <summary>
-        /// web服务器
-        /// </summary>
         private volatile WebApplication _webApp;
 
         private void Application_Startup(object sender, StartupEventArgs e)
@@ -72,6 +66,11 @@ namespace GrpcStopAsyncTest
                 {
                     //this method never return
                     this._webApp.StopAsync().Wait();
+
+                    //Task.Factory.StartNew(() =>
+                    //{
+                    //    this._webApp.StopAsync().Wait();
+                    //}).Wait();
                 }
             }
             catch
